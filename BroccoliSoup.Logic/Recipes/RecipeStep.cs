@@ -4,6 +4,7 @@ namespace BroccoliSoup.Logic.Recipes
 {
     public record RecipeStep
     {
+        //Notation for API
         [Required]
         public string Description { get; }
         public string? Image { get; }
