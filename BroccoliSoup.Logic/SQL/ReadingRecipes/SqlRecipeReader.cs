@@ -6,21 +6,14 @@ namespace BroccoliSoup.Logic.SQL.ReadingRecipes
 {
     public sealed class SqlRecipeReader : IRecipesReader
     {
-        private readonly SqlConnection _sqlConnection;
+        private readonly string _connectionString;
         public SqlRecipeReader(string connectionString)
         {
-            _sqlConnection = new SqlConnection(connectionString);
-            _sqlConnection.Open();
+            _connectionString = connectionString;
         }
 
-        public RecipeName[] GetAllRecipes() => RecipeNamesReader.GetAllRecipes(_sqlConnection);
-        public Ingredient[] GetIngredients(int recipeID) => IngredientsReader.GetIngredients(_sqlConnection, recipeID);
-        public RecipeStep[] GetSteps(int recipeID) => StepsReader.GetSteps(_sqlConnection, recipeID);
-
-        public void Dispose()
-        {
-            _sqlConnection.Close();
-            _sqlConnection.Dispose();
-        }
+        public RecipeName[] GetAllRecipes() => RecipeNamesReader.GetAllRecipes(_connectionString);
+        public Ingredient[] GetIngredients(int recipeID) => IngredientsReader.GetIngredients(_connectionString, recipeID);
+        public RecipeStep[] GetSteps(int recipeID) => StepsReader.GetSteps(_connectionString, recipeID);
     }
 }

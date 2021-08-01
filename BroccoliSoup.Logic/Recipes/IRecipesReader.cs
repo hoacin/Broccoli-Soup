@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BroccoliSoup.Logic.Recipes
 {
-    public interface IRecipesReader : IDisposable
+    public interface IRecipesReader
     {
         RecipeName[] GetAllRecipes();
         Ingredient[] GetIngredients(int recipeID);

@@ -10,10 +10,14 @@ namespace BroccoliSoup.Logic.SQL.ReadingRecipes
 {
     internal static class StepsReader
     {
-        public static RecipeStep[] GetSteps(SqlConnection sqlConnection, int recipeID)
+        public static RecipeStep[] GetSteps(string connectionString, int recipeID)
         {
             List<RecipeStep> steps = new();
-            using (SqlCommand command = new($"SELECT * FROM Steps WHERE RECIPE = {recipeID} ORDER BY Step", sqlConnection))
+
+            using SqlConnection connection = new(connectionString);
+            connection.Open();
+
+            using (SqlCommand command = new($"SELECT * FROM Steps WHERE RECIPE = {recipeID} ORDER BY Step", connection))
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())

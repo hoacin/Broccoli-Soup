@@ -10,10 +10,12 @@ namespace BroccoliSoup.Logic.SQL.ReadingRecipes
 {
     internal static class IngredientsReader
     {
-        public static Ingredient[] GetIngredients(SqlConnection sqlConnection, int recipeID)
+        public static Ingredient[] GetIngredients(string connectionString, int recipeID)
         {
             List<Ingredient> ingredients = new();
-            using (SqlCommand command = new($"SELECT * FROM Ingredients WHERE RECIPE = {recipeID}", sqlConnection))
+            using SqlConnection connection = new(connectionString);
+            connection.Open();
+            using (SqlCommand command = new($"SELECT * FROM Ingredients WHERE RECIPE = {recipeID}", connection))
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())

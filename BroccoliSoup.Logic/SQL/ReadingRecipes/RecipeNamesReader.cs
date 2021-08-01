@@ -6,10 +6,12 @@ namespace BroccoliSoup.Logic.SQL.ReadingRecipes
 {
     internal static class RecipeNamesReader
     {
-        internal static RecipeName[] GetAllRecipes(SqlConnection sqlConnection)
+        internal static RecipeName[] GetAllRecipes(string connectionString)
         {
             List<RecipeName> recipes = new();
-            using (SqlCommand command = new("SELECT * FROM Recipes", sqlConnection))
+            using SqlConnection connection = new(connectionString);
+            connection.Open();
+            using (SqlCommand command = new("SELECT * FROM Recipes", connection))
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
