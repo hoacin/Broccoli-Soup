@@ -18,6 +18,7 @@ namespace BroccoliSoup.Api.Initialization
             });
             _ = app.UseHttpsRedirection();
             _ = app.UseRouting();
+            _ = app.UseCors("OpenPolicy");
             _ = app.UseAuthorization();
             _ = app.UseEndpoints(endpoints =>
             {

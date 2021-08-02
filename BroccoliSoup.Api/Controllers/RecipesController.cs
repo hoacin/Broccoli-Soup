@@ -1,4 +1,5 @@
 ﻿using BroccoliSoup.Logic.Recipes;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -12,6 +13,7 @@ namespace BroccoliSoup.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("OpenPolicy")]
     public class RecipesController : ControllerBase
     {
         private readonly IRecipesReader _recipesReader;
@@ -24,10 +26,12 @@ namespace BroccoliSoup.Api.Controllers
         [HttpGet("")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<RecipeName>))]
         [SwaggerResponse(500)]
+        [EnableCors("OpenPolicy")]
         public ActionResult<IEnumerable<RecipeName>> GetRecipes() => _recipesReader.GetAllRecipes();
         [HttpGet("Steps/{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<RecipeStep>))]
         [SwaggerResponse(500)]
+        [EnableCors("OpenPolicy")]
         public ActionResult<IEnumerable<RecipeStep>> GetSteps(int id) => _recipesReader.GetSteps(id);
 
     }
