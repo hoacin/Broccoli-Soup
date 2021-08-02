@@ -1,4 +1,4 @@
-﻿namespace BroccoliSoup.Logic.Recipes
+﻿/*namespace BroccoliSoup.Logic.Recipes
 {
     public class Recipe
     {
@@ -22,3 +22,4 @@
         public RecipeStep GetStep(int index) => _steps[index];
     }
 }
+*/

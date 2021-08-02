@@ -25,10 +25,6 @@ namespace BroccoliSoup.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<RecipeName>))]
         [SwaggerResponse(500)]
         public ActionResult<IEnumerable<RecipeName>> GetRecipes() => _recipesReader.GetAllRecipes();
-        [HttpGet("Ingredients/{id}")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<RecipeName>))]
-        [SwaggerResponse(500)]
-        public ActionResult<IEnumerable<Ingredient>> GetIngredients(int id) => _recipesReader.GetIngredients(id);
         [HttpGet("Steps/{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<RecipeStep>))]
         [SwaggerResponse(500)]

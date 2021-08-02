@@ -15,9 +15,7 @@ namespace BroccoliSoup.Logic.SQL.ReadingRecipes
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
-                {
-                    recipes.Add(new RecipeName(reader.GetInt32(0), reader.GetString(1)));
-                }
+                    recipes.Add(new RecipeName(reader.GetInt32(0), reader.GetString(1), reader.GetString(3), reader.GetString(4)));
             }
             return recipes.ToArray();
         }
