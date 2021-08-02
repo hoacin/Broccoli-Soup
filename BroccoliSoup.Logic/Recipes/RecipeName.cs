@@ -7,7 +7,9 @@ namespace BroccoliSoup.Logic.Recipes
         public int Id { get; }
         [Required]
         public string Name { get; }
+        [Required]
         public string Image { get; }
+        [Required]
         public string Ingredients { get; }
 
         public RecipeName(int id, string name, string image, string ingredients)

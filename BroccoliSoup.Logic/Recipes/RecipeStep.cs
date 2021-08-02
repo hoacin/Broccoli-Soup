@@ -4,14 +4,17 @@ namespace BroccoliSoup.Logic.Recipes
 {
     public record RecipeStep
     {
-        //Notation for API
         [Required]
-        public string Description { get; }
-        public string? Image { get; }
+        public string ShortDescription { get; }
+        [Required]
+        public string LongDescription { get; }
+        [Required]
+        public string Image { get; }
 
-        public RecipeStep(string description, string? image)
+        public RecipeStep(string longDescription, string shortDescription, string image)
         {
-            Description = description;
+            LongDescription = longDescription;
+            ShortDescription = shortDescription;
             Image = image;
         }
     }

@@ -23,8 +23,7 @@ namespace BroccoliSoup.Logic.SQL.ReadingRecipes
                 while (reader.Read())
                 {
                     string description = reader.GetString(2);
-                    string? image = reader.IsDBNull(3) ? null : reader.GetString(3);
-                    steps.Add(new RecipeStep(description, image));
+                    steps.Add(new RecipeStep(reader.GetString(2), reader.GetString(4), reader.GetString(3)));
                 }
             }
             return steps.ToArray();
